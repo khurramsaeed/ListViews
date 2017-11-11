@@ -12,6 +12,8 @@
         <activity android:name=".ListView">
         </activity>
         <activity android:name=".ListViewExpanded">
+        </activity>
+        <activity android:name=".ListViewExpandedCustomAdapter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
