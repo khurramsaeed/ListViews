@@ -7,12 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class ListView extends AppCompatActivity {
     ArrayAdapter<LeaderBoard> adapter;
     ArrayList<LeaderBoard> leaderBoard;
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         leaderBoard = new ArrayList<>();
         leaderBoard.add(new LeaderBoard("P1", "10"));
         leaderBoard.add(new LeaderBoard("P2", "05"));
-        ListView listView = (ListView) findViewById(R.id.activity_main_listView);
+        android.widget.ListView listView = (android.widget.ListView) findViewById(R.id.activity_main_listView);
         //List view har ingen metoder selv om items, subitems osv.
         //Til dette anvendes en Adapter.
         //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, leaderBoard);
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 LeaderBoard leaderBoard = adapter.getItem(position);
-                Toast.makeText(MainActivity.this, leaderBoard.getPlayerName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListView.this, leaderBoard.getPlayerName(), Toast.LENGTH_SHORT).show();
                 //Removes item from array and updates ListView
                 adapter.remove(leaderBoard);
             }

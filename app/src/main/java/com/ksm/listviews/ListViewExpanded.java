@@ -11,13 +11,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListViewExpanded extends AppCompatActivity {
-
+    ArrayList<HashMap<String, String>> data = new ArrayList<>();
+    SimpleAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_expanded);
 
-        ArrayList<HashMap<String, String>> data = new ArrayList<>();
+
         data.add(new LeaderBoard("Khurram", "1").toHashMap());
         data.add(new LeaderBoard("Alex", "2").toHashMap());
         data.add(new LeaderBoard("Niko", "3").toHashMap());
@@ -26,7 +27,7 @@ public class ListViewExpanded extends AppCompatActivity {
         String[] hashMapProperties = {"PlayerName", "Rank"};
         int[] textViewIds = {R.id.list_item_playerName, R.id.list_item_playerRank};
 
-        SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.list_item_leaderboard, hashMapProperties, textViewIds);
+        adapter = new SimpleAdapter(this, data, R.layout.list_item_leaderboard, hashMapProperties, textViewIds);
 
         ListView listView = findViewById(R.id.activity_listviewexpanded_listView);
         listView.setAdapter(adapter);
@@ -36,7 +37,8 @@ public class ListViewExpanded extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.menu_main_addItem) {
-
+            data.add(new LeaderBoard("John Doe", "3").toHashMap());
+            adapter.notifyDataSetChanged();
         }
         return super.onOptionsItemSelected(item);
     }
